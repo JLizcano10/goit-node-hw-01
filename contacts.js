@@ -5,14 +5,7 @@ const path = require("path");
 
 const contactPath = path.resolve("db/contacts.json");
 
-/*
- * Comenta y anota el valor
- * const contactsPath = ;
- */
-
-// TODO: documenta cada función
 function listContacts() {
-  // ...tu código
   fs.readFile(contactPath)
     .then((data) => {
       const contactList = JSON.parse(data);
@@ -22,8 +15,6 @@ function listContacts() {
 }
 
 function getContactById(contactId) {
-  // ...tu código
-
   fs.readFile(contactPath)
     .then((data) => {
       const contacts = JSON.parse(data);
@@ -38,14 +29,13 @@ function getContactById(contactId) {
 }
 
 function removeContact(contactId) {
-  // ...tu código
   fs.readFile(contactPath)
     .then((data) => {
       const contacts = JSON.parse(data);
       const filteredContacts = contacts.filter(
         (contact) => contact.id !== contactId
       );
-      // New contacts
+
       fs.writeFile(contactPath, JSON.stringify(filteredContacts)).then(
         () => console.table(filteredContacts),
         console.log(`Done, contact ${contactId} was removed`)
@@ -55,7 +45,6 @@ function removeContact(contactId) {
 }
 
 function addContact(name, email, phone) {
-  // ...tu código
   const newContact = {
     id: nanoid(),
     name,
