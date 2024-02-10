@@ -46,8 +46,9 @@ function removeContact(contactId) {
         (contact) => contact.id !== contactId
       );
       // New contacts
-      fs.writeFile(contactPath, JSON.stringify(filteredContacts)).then(() =>
-        console.log(`${contactId} was removed`)
+      fs.writeFile(contactPath, JSON.stringify(filteredContacts)).then(
+        () => console.table(filteredContacts),
+        console.log(`Done, contact ${contactId} was removed`)
       );
     })
     .catch((err) => console.log(err.message));
@@ -66,7 +67,10 @@ function addContact(name, email, phone) {
     .then((data) => {
       const contactList = JSON.parse(data);
       contactList.push(newContact);
-      console.log(contactList);
+      fs.writeFile(contactPath, JSON.stringify(contactList)).then(
+        () => console.table(contactList),
+        console.log(`${newContact.name} was added to contacts`)
+      );
     })
     .catch((err) => console.log(err.message));
 }
