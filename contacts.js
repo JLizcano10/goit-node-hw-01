@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
+const { log } = require("console");
+const { nanoid } = require("nanoid");
 const path = require("path");
-import { nanoid } from "nanoid";
 
 const contactPath = path.resolve("db/contacts.json");
 
@@ -46,7 +47,7 @@ function removeContact(contactId) {
       );
       // New contacts
       fs.writeFile(contactPath, JSON.stringify(filteredContacts)).then(() =>
-        console.log(`Done`)
+        console.log(`${contactId} was removed`)
       );
     })
     .catch((err) => console.log(err.message));
