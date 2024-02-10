@@ -1,5 +1,4 @@
 const fs = require("fs").promises;
-const { log } = require("console");
 const { nanoid } = require("nanoid");
 const path = require("path");
 
