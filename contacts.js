@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 const path = require("path");
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 
 const contactPath = path.resolve("db/contacts.json");
 
@@ -55,7 +55,7 @@ function removeContact(contactId) {
 function addContact(name, email, phone) {
   // ...tu código
   const newContact = {
-    // id: nanoid(),
+    id: nanoid(),
     name,
     email,
     phone,
